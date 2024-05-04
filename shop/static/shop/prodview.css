@@ -1,0 +1,19 @@
+.footer_part{
+        background-color: white;
+        border-top: 1px solid lightgray;
+        color: black;
+        padding: 50px 0;
+        /* height: 300px; */
+    }
+    .footer_part li{
+        
+        padding: 10px 0;
+    }
+    .footer_part li a{
+       
+        color:gray;
+    }
+    .footer_part li a:hover{
+        color:black;
+        
+    }

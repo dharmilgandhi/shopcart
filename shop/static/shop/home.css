@@ -1,0 +1,110 @@
+/* body{
+    background-color:linen;
+} */
+.navbar1{
+         position: sticky;
+       }
+.col-md-3
+    {
+    display: inline-block;
+    margin-left:-4px;
+    }
+.col-md-3 img{
+    width: 275px;
+    height: 260px;
+
+    }
+/* .dropdown:hover>.dropdown-menu {
+  display: block;
+} */
+
+
+.carousel-indicators{
+        margin-bottom:0.1rem;
+    }
+    .carousel-indicators .active {
+    background-color: blue;
+    }
+    
+    .container{
+        padding-left:0px;
+        padding-right:0px;
+    }
+    body .carousel-indicator li{
+    background-color: blue;
+
+    }
+    body .carousel-indicators{
+    bottom: 0;
+    }
+    body .carousel-control-prev-icon,
+    body .carousel-control-next-icon{
+    background-color: blue;
+    }
+    .carousel-control-prev,
+    .carousel-control-next{
+    top: auto;
+    bottom: auto;
+    padding-top: 222px;
+    }
+    #myCarousel{
+        top: auto;
+        bottom: auto;
+        padding-top: 300px;
+    }
+    body .no-padding{
+    padding-left: 0;
+    padding-right: 0;
+    
+    }
+    
+    /* card */
+    .btnwidth{
+        width:100%;
+        height:100%;
+        margin:0;
+    }
+    .categories{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 139px;
+        margin: 10px 150px;
+        padding: 0 40px;
+        
+    }
+    .categories button{
+        width: 100%;
+    }
+    .categoryttitle{
+        font-size: x-large;
+        text-align: center;
+    }
+    .cardtext{
+        font-size: x-large;
+    }
+    #logotitle{
+        font-size: x-large;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bolder;
+        color: gray;
+    }
+    
+    .footer_part{
+        background-color: white;
+        border-top: 1px solid lightgray;
+        color: black;
+        padding: 50px 0;
+        /* height: 300px; */
+    }
+    .footer_part li{
+        text-decoration: none;
+        padding: 10px 0;
+    }
+    .footer_part li a{
+        text-decoration: none;
+        color:gray;
+    }
+    .footer_part li a:hover{
+        color:black;
+    }
+    

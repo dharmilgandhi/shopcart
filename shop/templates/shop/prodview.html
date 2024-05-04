@@ -1,0 +1,80 @@
+
+{% extends 'shop/basic.html' %}
+{% block title %}{{product.product_name}} ShopCart{% endblock%}
+
+{% block extra_head %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/home.css' %}">
+    
+    
+{% endblock %}
+{% block body %}
+{% load static %}
+	
+<div class="card" style="background-color:whitesmoke;">
+	<div class="row">
+		<aside class="col-sm-5  align-items-center border-right">
+			<div  class="imgContainer"> 
+				<img id= "prodImage" src="/media/{{product.image}}" style="width:629px; height:620px; padding:10px; ">
+			</div>
+		</aside>
+		<aside class="col-sm-7">
+			<article class="card-body p-5">
+				<h3 id="namepr{{product.id}}" class="title mb-3">{{product.product_name}}</h3>
+				
+				<p class="price-detail-wrap"> 
+					<span class="price h3 text-warning"> 
+				<span class="currency">Rs.</span><span class="num" id="pricepr{{product.id}}">{{product.price}}</span>
+					</span> 
+				</p> 
+				<dl class="param param-feature">
+				<dt>From</dt>
+				<dd>{{product.shop_id}}</dd>
+				</dl>
+				<dl class="item-property">
+				<dt>Description</dt>
+				<dd><p>{{product.desc}}</p></dd>
+				</dl>
+				<dl class="param param-feature">
+				<dt>Model#</dt>
+				<dd>12345611</dd>
+				</dl>  
+				<dl class="param param-feature">
+				<dt>Color</dt>
+				<dd>Black and white</dd>
+				</dl>
+				<dl class="param param-feature">
+				<dt>Delivery</dt>
+				<dd>Ahmedabad</dd>
+				</dl>
+
+				<hr>
+	<div class="row">
+		<div class="col-sm-5">
+			<dl class="param param-inline">
+			<dt>Quantity: </dt>
+			<dd>
+				<select class="form-control form-control-sm" style="width:70px;">
+					<option> 1 </option>
+					<option> 2 </option>
+					<option> 3 </option>
+				</select>
+			</dd>
+			</dl> 
+		</div>
+			</div> 
+	<hr>
+	
+	<span id="divpr{{product.id}}" class="divpr">
+                                    <button id="pr{{product.id}}" class="btn btn-dark btn-lg btn-outline-light cart">Add To Cart</button>
+                                </span>
+			<a href="#" class="btn btn-secondary btn-lg btn-outline-light"> Buy now </a>
+	
+			
+		
+</article> 
+		</aside>
+	</div> 
+</div>
+
+{% endblock %}

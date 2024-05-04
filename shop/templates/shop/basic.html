@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}">
+    {% block extra_head %}{% endblock %}
+    <title>{% block title%} {% endblock %}</title>
+     <style>
+     
+        {% block css %}
+        {% endblock %}
+    </style>
+  </head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand " id="logotitle" href="/shop">SHOPGURU</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/shop">Home <span class="sr-only">(current)</span></a>
+      </li>
+
+      {% comment %} <li class="nav-item dropdown">
+        <a class="nav-link" href="#">Categories</a> 
+        <div class="dropdown-menu bg-secondary mydropdown" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item bg-secondary" href="/shop/pageview/men">Men's Wear</a>
+          <a class="dropdown-item bg-secondary" href="/shop/pageview/kid">Kid's Wear</a>
+          <a class="dropdown-item bg-secondary" href="/shop/pageview/women">Women's Wear</a>
+        </div>
+      </li> {% endcomment %}
+      
+      <div class="dropdown show">
+  <a class="nav-link dropdown-toggle text-secondary " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Categories
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="/shop/pageview/men">Men's Wear</a>
+    <a class="dropdown-item" href="/shop/pageview/kid">Kid's Wear</a>
+    <a class="dropdown-item" href="/shop/pageview/women">Women's Wear</a>
+  </div>
+</div>
+      
+      <div class="dropdown show">
+  <a class="nav-link dropdown-toggle text-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Our Partners
+  </a>
+  
+  {% comment %} <h1>{{i.shop_name}}</h1> {% endcomment %}
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+  {% for i in shopView%}
+    <a class="dropdown-item" href="/shop/catview/{{i.shop_id}}">{{i.shop_name}}</a>
+  {% endfor %}
+  </div>
+  
+</div>
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/contact">Contact Us</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <button type="button" id="popcart" class="btn btn-outline-secondary  mx-2 popcart" data-html="true" data-container="body"   data-toggle="popover" data-placement="bottom">Cart(<span id= "cart">0</span>)
+    </button>
+    
+    <button type="button" class="btn btn-outline-secondary mr-2" data-toggle="modal" data-target="#loginModal" id="loginbutton">
+Login
+</button>
+<span id="signupbutton">
+<button type="button" class="btn btn-outline-secondary mr-2" data-toggle="modal" data-target="#signupModal" >
+SignUp
+</button>
+</span>
+  </div>
+</nav>
+{% for message in messages  %}            
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message : </strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      {% endfor %}    
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalTitle">SignUp Here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action= "/shop/signup/" method='post'>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" name="username" placeholder="Choose a unique username">
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="pass1">Enter password</label>
+    <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose Your Password">
+  </div>
+  <div class="form-group">
+    <label for="pass2">Confirm Password</label>
+    <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Enter your password again">
+  </div>
+ 
+
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-secondary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalTitle">Login Here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/shop/login/" method="POST">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Enter your username "required>
+  </div>
+  <div class="form-group">
+    <label for="pass">Enter your password </label>
+    <input type="password" class="form-control" id="loginpass" name="loginpass" placeholder="Enter your password "required>
+  </div>
+ {% csrf_token %}
+        <button type="submit" class="btn btn-outline-secondary">Submit</button>
+</form>
+      </div>
+       <div class="modal-footer">
+      </div>
+</div>
+</div>
+</div>
+
+  {% block body %} 
+  
+  {% endblock %}
+  {% block footer %} 
+    <footer class="footer_part">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-sm-6 col-lg-2">                  
+                        <h4>Get To Know Us</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Our Partners<a><li>                            
+                        </ul>
+                </div>
+                <div class="col-sm-6 col-lg-2">                
+                        <h4>Connect with Us</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="">Facebook</a></li>
+                            <li><a href="">Twitter</a></li>
+                            <li><a href="">Instagram</a></li>
+                        </ul>              
+                </div>
+                <div class="col-sm-6 col-lg-3">                   
+                        <h4>Make Money With Us</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Sell on ShopGuru</a></li>
+                            <li><a href="#">Advertise Your Products</a></li>
+                        </ul>
+                </div>
+                <div class="col-sm-6 col-lg-3"> 
+                        <h4>Address</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">200,Ahmedabad</a></li>
+                            <li><a href="#">+91 9876543210</a></li>
+                            <li>contact@gmail.com</li>
+                        </ul>
+                </div>
+            </div>
+  
+  {% endblock %}
+  
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+    </script>
+    
+        {% block js %} 
+         
+        {% endblock %}
+        <script>
+          z = "{{user}}"
+          console.log(z)
+          if(z != "AnonymousUser"){
+            x = document.getElementById('loginbutton')
+            x.innerHTML = `Login as ${z}`
+            y = document.getElementById('signupbutton')
+            y.innerHTML = `<a class="btn btn-outline-secondary " href="/shop/logout/">Logout</a>`
+          }
+          
+        </script> 
+</body>
+
+<script src="{% static 'shop/homescript.js' %}"></script>
+</html>

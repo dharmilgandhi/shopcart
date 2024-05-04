@@ -1,0 +1,52 @@
+/* body{
+    background-color: black;
+} */
+*{
+    margin: 0;
+    padding: 0;
+}
+.mycontainer1{
+    display:grid !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+    /* grid-template-columns: auto auto auto auto; */
+    gap: 15px 30px;
+    margin: 15px 50px;
+}
+.imgupdate{
+    height: 250px;
+    width: fit-content !important;
+}
+    .categories button{
+        width: 100%;
+    }
+    #logotitle{
+        font-size: x-large;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bolder;
+        color: gray;
+    }
+    .categoryttitle{
+        font-size: x-large;
+        text-align: center;
+    }
+    .cardtext{
+        font-size: x-large;
+    }
+    .footer_part{
+        background-color: white;
+        border-top: 1px solid lightgray;
+        color: black;
+        padding: 50px 0;
+        /* height: 300px; */
+    } 
+    .footer_part li{
+        list-style: none;
+        padding: 10px 0;
+    }
+    .footer_part li a{
+        
+        color:gray;
+    }
+    .footer_part li a:hover{
+        color:black;
+    }

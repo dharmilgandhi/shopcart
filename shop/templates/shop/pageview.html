@@ -1,0 +1,50 @@
+{% extends 'shop/basic.html' %}
+
+{% block extra_head %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/pageview.css' %}">
+{% endblock %}
+ 
+ 
+{% block body %}
+<div class="mycontainer1">
+{% for i in shop_id %}
+    <div class="col-xs-3 col-sm-3 col-md-3">
+        <div class="card align-items-center" style="width: 18rem;"> 
+            <img src='/media/{{i.image}}' class="card-img-top" style="height:250px;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title cardtext" id="namepr{{i.id}}">{{i.product_name}}</h5>
+                <h5 id="price">Price:<span>{{i.price}}</span></h5>
+                <p class="card-text">{{i.desc|slice:"0:53"}}...</p>
+                <span id="divpr{{i.id}}" class="divpr">
+                    <button id="pr{{i.id}}" class="btn btn-dark btn-outline-light cart">Add To Cart</button>
+                </span>
+                <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-secondary btn-outline-light  cart" style="width:120px;" >View</button></a>
+            </div>
+         </div>
+    </div>
+{% endfor %}
+</div>
+
+
+<div class="mycontainer1">
+{% for i in cat %}
+     <div class="col-xs-3 col-sm-3 col-md-3 ">
+        <div class="card align-items-center" style="width: 18rem;"> 
+            <img src='/media/{{i.image}}' class="card-img-top" style="height:250px;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title cardtext" id="namepr{{i.id}}">{{i.product_name}}</h5>
+                <h5>Price:<span id="pricepr{{i.id}}">{{i.price}}</span></h5>
+                <p class="card-text">{{i.desc|slice:"0:53"}}...</p>
+                <span id="divpr{{i.id}}" class="divpr">
+                    <button id="pr{{i.id}}" class="btn btn-dark btn-outline-light cart">Add To Cart</button>
+                </span>
+                
+                <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-secondary btn-outline-light  cart" style="width:120px;" >View</button></a>
+            </div>
+         </div>
+    </div> 
+{% endfor %} 
+</div>
+
+{% endblock body %}
